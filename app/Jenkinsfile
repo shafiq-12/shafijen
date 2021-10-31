@@ -1,11 +1,23 @@
 pipeline {
     agent any
+    parameters {
+        choice (
+            choices: ['greetings', 'silence'],
+            description: '',
+            name: 'REQUESTED_ACTION')
+        )
+    }
     stages {
         stage ('build') {
-          steps {
-            echo "Building"
+
+              when {
+                  expression {params.REQUESTED_ACTION == 'greetings'}
+              }
+            steps {
+                echo "Building"
+            }
+            
           }
-        }
         stage('test') {
             steps {
                 echo "testing"
