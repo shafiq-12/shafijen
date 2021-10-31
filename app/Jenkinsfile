@@ -1,10 +1,7 @@
 pipeline {
     agent any
     parameters {
-        choice (
-            choices: ['greetings', 'silence'],
-            description: '',
-            name: 'REQUESTED_ACTION')
+        string(name: 'REQUESTED_ACTION', defaultvalue: '', description" 'type the action' )
     }
     stages {
         stage ('build') {
@@ -19,7 +16,7 @@ pipeline {
           }
         stage('test') {
             when {
-                expression {$BRANCH_NAME == 'feature'}
+                expression {${BRANCH_NAME} == 'feature'}
             }
             steps {
                 echo "testing"
