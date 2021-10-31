@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters {
-        string(name: 'REQUESTED_ACTION', defaultvalue: '', description: 'type the action')
+        string(name: 'REQUESTED_ACTION', defaultValue: '', description: 'type the action')
     }
     stages {
         stage ('build') {
